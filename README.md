@@ -24,34 +24,6 @@ A modern job board application built with React, TypeScript, and Tailwind CSS. T
 - Context API for state management
 - Custom hooks for debouncing
 
-## Project Structure
-
-The project is organized into the following key directories:
-
-src/
-├── components/
-│ ├── ActiveFilters.tsx # Shows active filters on mobile
-│ ├── JobApplicationModal.tsx# Job application form
-│ ├── JobCard.tsx # Individual job listing card
-│ ├── JobDetailsModal.tsx # Detailed job view
-│ ├── JobForm.tsx # Form for posting new jobs
-│ ├── JobList.tsx # List of job cards with infinite scroll
-│ ├── MobileFilters.tsx # Mobile-optimized filters
-│ ├── Navigation.tsx # Main navigation
-│ ├── SearchFilters.tsx # Desktop filters
-| └── Shimmer.tsx # Shimmer effect for loading state
-├── context/
-│ └── JobContext.tsx # Global state management
-├── hooks/
-│ └── useDebounce.ts # Custom hook for search debouncing
-├── services/
-│ └── jobService.ts # API service for job operations
-├── types/
-│ └── index.ts # TypeScript type definitions
-├── utils/
-│ └── dateUtils.ts # Date formatting utilities
-└── App.tsx # Main application component
-
 
 ## Setup & Installation
 
@@ -112,7 +84,6 @@ npm run build
 ### Job Management
 - New jobs appear at the top of the list
 - Date-based sorting
-- Skills tagging system
 - Comprehensive job details modal
 
 
