@@ -75,7 +75,7 @@ npm run build
    - Floating action button for mobile filters
 
 ### Filter System
-- Real-time search across job titles and companies
+- Real-time search across job titles, descriptions, companies, skills
 - Location-based filtering
 - Job type filtering (Full-time, Part-time, Contract)
 - Mobile-optimized filter modal
