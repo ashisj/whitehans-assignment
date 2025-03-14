@@ -27,7 +27,7 @@ function HomePage() {
 function App() {
   return (
     <JobProvider>
-      <Router>
+      <Router basename="/whitehans-assignment">
         <div className="min-h-screen bg-gray-100">
           <Navigation />
           <Routes>
