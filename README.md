@@ -1,54 +1,106 @@
-# React + TypeScript + Vite
+# Job Board Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern job board application built with React, TypeScript, and Tailwind CSS. This application allows users to browse job listings, post new jobs, and apply for positions with a responsive design that works across all devices.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔍 Real-time search with debouncing
+- 📱 Responsive design with mobile-first approach
+- ⚡ Infinite scroll for job listings
+- 🎯 Advanced filtering system
+- ✨ Modern UI with Tailwind CSS
+- 📝 Job posting functionality
+- 💼 Job application system
+- 🏷️ Skills tagging system
 
-## Expanding the ESLint configuration
+## Setup & Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. **Clone the repository**
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+git clone https://github.com/yourusername/job-board.git
+cd job-board
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. **Install dependencies**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+3. **Run the development server** 
+
+```bash
+npm run dev
+```
+
+4. **Build the production version**
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+The project is organized into the following key directories:
+
+src/
+├── components/
+│ ├── ActiveFilters.tsx # Shows active filters on mobile
+│ ├── JobCard.tsx # Individual job listing card
+│ ├── JobList.tsx # List of job cards with infinite scroll
+│ ├── JobForm.tsx # Form for posting new jobs
+│ ├── JobDetailsModal.tsx # Detailed job view
+│ ├── JobApplicationModal.tsx# Job application form
+│ ├── Navigation.tsx # Main navigation
+│ ├── SearchFilters.tsx # Desktop filters
+│ └── MobileFilters.tsx # Mobile-optimized filters
+├── context/
+│ └── JobContext.tsx # Global state management
+├── hooks/
+│ └── useDebounce.ts # Custom hook for search debouncing
+├── types/
+│ └── index.ts # TypeScript type definitions
+├── utils/
+│ └── dateUtils.ts # Date formatting utilities
+└── App.tsx # Main application component
+
+## Technical Approach
+
+### State Management
+- Used React Context API for global state management
+- Implemented optimized filtering with debouncing
+- Maintained separate states for mobile and desktop views
+
+### Performance Optimizations
+1. **Search Debouncing**
+   - Implemented 500ms delay for search inputs
+   - Reduces unnecessary API calls and re-renders
+
+2. **Infinite Scroll**
+   - Loads jobs in batches of 10
+   - Uses Intersection Observer API
+   - Improves initial load time and performance
+
+3. **Responsive Design**
+   - Mobile-first approach
+   - Optimized filters for different screen sizes
+   - Floating action button for mobile filters
+
+### Filter System
+- Real-time search across job titles and companies
+- Location-based filtering
+- Job type filtering (Full-time, Part-time, Contract)
+- Mobile-optimized filter modal
+- Active filters display for better UX
+
+### Job Management
+- New jobs appear at the top of the list
+- Date-based sorting
+- Skills tagging system
+- Comprehensive job details modal
+
+## Key Features Implementation
+
+### Search and Filters
+
