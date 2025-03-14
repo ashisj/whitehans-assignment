@@ -4,22 +4,62 @@ A modern job board application built with React, TypeScript, and Tailwind CSS. T
 
 ## Features
 
-- 🔍 Real-time search with debouncing
+- 🔍 Real-time job search with debouncing
+- 📍 Location-based filtering
+- 💼 Job type filtering (Full-time, Part-time, Contract)
 - 📱 Responsive design with mobile-first approach
-- ⚡ Infinite scroll for job listings
-- 🎯 Advanced filtering system
-- ✨ Modern UI with Tailwind CSS
+- ♾️ Infinite scroll for job listings
+- 🎯 Active filters display on Mobile  view
 - 📝 Job posting functionality
-- 💼 Job application system
-- 🏷️ Skills tagging system
+- 📄 Detailed job view with application form
+- 🎨 Modern UI with Tailwind CSS
+- 🔄 Loading states and error handling
+
+## Tech Stack
+
+- React 18
+- TypeScript
+- Tailwind CSS
+- React Router v6
+- Context API for state management
+- Custom hooks for debouncing
+
+## Project Structure
+
+The project is organized into the following key directories:
+
+src/
+├── components/
+│ ├── ActiveFilters.tsx # Shows active filters on mobile
+│ ├── JobApplicationModal.tsx# Job application form
+│ ├── JobCard.tsx # Individual job listing card
+│ ├── JobDetailsModal.tsx # Detailed job view
+│ ├── JobForm.tsx # Form for posting new jobs
+│ ├── JobList.tsx # List of job cards with infinite scroll
+│ ├── MobileFilters.tsx # Mobile-optimized filters
+│ ├── Navigation.tsx # Main navigation
+│ ├── SearchFilters.tsx # Desktop filters
+| └── Shimmer.tsx # Shimmer effect for loading state
+├── context/
+│ └── JobContext.tsx # Global state management
+├── hooks/
+│ └── useDebounce.ts # Custom hook for search debouncing
+├── services/
+│ └── jobService.ts # API service for job operations
+├── types/
+│ └── index.ts # TypeScript type definitions
+├── utils/
+│ └── dateUtils.ts # Date formatting utilities
+└── App.tsx # Main application component
+
 
 ## Setup & Installation
 
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/job-board.git
-cd job-board
+git clone https://github.com/ashisj/whitehans-assignment.git
+cd whitehans-assignment
 ```
 
 2. **Install dependencies**
@@ -40,37 +80,12 @@ npm run dev
 npm run build
 ```
 
-## Project Structure
-
-The project is organized into the following key directories:
-
-src/
-├── components/
-│ ├── ActiveFilters.tsx # Shows active filters on mobile
-│ ├── JobCard.tsx # Individual job listing card
-│ ├── JobList.tsx # List of job cards with infinite scroll
-│ ├── JobForm.tsx # Form for posting new jobs
-│ ├── JobDetailsModal.tsx # Detailed job view
-│ ├── JobApplicationModal.tsx# Job application form
-│ ├── Navigation.tsx # Main navigation
-│ ├── SearchFilters.tsx # Desktop filters
-│ └── MobileFilters.tsx # Mobile-optimized filters
-├── context/
-│ └── JobContext.tsx # Global state management
-├── hooks/
-│ └── useDebounce.ts # Custom hook for search debouncing
-├── types/
-│ └── index.ts # TypeScript type definitions
-├── utils/
-│ └── dateUtils.ts # Date formatting utilities
-└── App.tsx # Main application component
 
 ## Technical Approach
 
 ### State Management
 - Used React Context API for global state management
 - Implemented optimized filtering with debouncing
-- Maintained separate states for mobile and desktop views
 
 ### Performance Optimizations
 1. **Search Debouncing**
@@ -100,7 +115,4 @@ src/
 - Skills tagging system
 - Comprehensive job details modal
 
-## Key Features Implementation
-
-### Search and Filters
 
