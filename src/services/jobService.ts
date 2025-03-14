@@ -1,10 +1,22 @@
-import jobsData from '../../public/data/jobs.json';
 import { Job } from '../types';
 
 // Simulate API delay
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 export const jobService = {
+  async fetchJobsData(): Promise<Job[]> {
+    try {
+      const response = await fetch('/whitehans-assignment/data/jobs.json');
+      if (!response.ok) {
+        throw new Error('Failed to fetch jobs data');
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching jobs data:', error);
+      return [];
+    }
+  },
+
   async fetchJobs(page: number, limit: number = 10): Promise<{
     jobs: Job[];
     hasMore: boolean;
@@ -12,6 +24,7 @@ export const jobService = {
   }> {
     await delay(800);
 
+    const jobsData = await this.fetchJobsData();
     const start = (page - 1) * limit;
     const end = start + limit;
     const jobs = jobsData.slice(start, end);
@@ -34,9 +47,9 @@ export const jobService = {
   }> {
     await delay(800);
 
+    const jobsData = await this.fetchJobsData();
     let filteredJobs = [...jobsData];
 
-    // Search in title, company, and description
     if (filters.search?.trim()) {
       const searchTerm = filters.search.toLowerCase().trim();
       filteredJobs = filteredJobs.filter(job => 
@@ -49,7 +62,6 @@ export const jobService = {
       );
     }
 
-    // Filter by location
     if (filters.location?.trim()) {
       const locationTerm = filters.location.toLowerCase().trim();
       filteredJobs = filteredJobs.filter(job => 
@@ -57,7 +69,6 @@ export const jobService = {
       );
     }
 
-    // Filter by job type
     if (filters.type?.trim()) {
       filteredJobs = filteredJobs.filter(job => 
         job.type.toLowerCase() === filters.type.toLowerCase().trim()

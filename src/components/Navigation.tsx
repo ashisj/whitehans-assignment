@@ -7,7 +7,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center">
           {/* WhiteHans Logo and Home Link */}
           <Link to="/" className="flex items-center space-x-2">
-            <img src="/WhiteHans.png" alt="WhiteHans Logo" className="w-8 h-8" />
+            <img src="/whitehans-assignment/WhiteHans.png" alt="WhiteHans Logo" className="w-8 h-8" />
             <span className="text-xl font-bold text-gray-800">WhiteHans</span>
           </Link>
 
