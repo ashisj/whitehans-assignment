@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Job } from '../types';
+import { Job, JobApplication, JobApplicationFormData } from '../types';
 import { getTimeAgo } from '../utils/dateUtils';
 import JobDetailsModal from './JobDetailsModal';
 import JobApplicationModal from './JobApplicationModal';
@@ -15,13 +15,17 @@ export default function JobCard({ job }: JobCardProps) {
   const timeAgo = getTimeAgo(job.postedDate);
   const isNew = timeAgo === 'new';
 
-  const handleApply = async (applicationData: JobApplication) => {
+  const handleApply = async (formData: JobApplicationFormData) => {
     try {
+      const applicationData: JobApplication = {
+        ...formData,
+        jobId: job.id
+      };
+      // In a real app, this would make an API call to submit the application
       console.log('Submitting application:', applicationData);
-      alert('Application submitted successfully!');
+      setIsApplicationOpen(false);
     } catch (error) {
       console.error('Error submitting application:', error);
-      alert('Failed to submit application. Please try again.');
     }
   };
 

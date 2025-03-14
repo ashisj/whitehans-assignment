@@ -14,13 +14,16 @@ export interface Job extends JobFormData {
   postedDate: string;
 }
 
-export interface JobApplication {
-  jobId: number;
+export interface JobApplicationFormData {
   name: string;
   email: string;
   phone: string;
   resume: File | null;
   coverLetter: string;
+}
+
+export interface JobApplication  extends JobApplicationFormData{
+  jobId: number;
 }
 
 export interface FilterState {

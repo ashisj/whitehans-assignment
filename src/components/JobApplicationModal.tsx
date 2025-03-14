@@ -1,26 +1,16 @@
 import { useState } from 'react';
-import { Job } from '../types';
+import { Job, JobApplicationFormData } from '../types';
 
 interface JobApplicationModalProps {
   job: Job;
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (applicationData: JobApplication) => void;
-}
-
-interface JobApplication {
-  jobId: number;
-  fullName: string;
-  email: string;
-  phone: string;
-  resume: File | null;
-  coverLetter: string;
+  onSubmit: (applicationData: JobApplicationFormData) => void;
 }
 
 export default function JobApplicationModal({ job, isOpen, onClose, onSubmit }: JobApplicationModalProps) {
-  const [formData, setFormData] = useState<JobApplication>({
-    jobId: job.id,
-    fullName: '',
+  const [formData, setFormData] = useState<JobApplicationFormData>({
+    name: '',
     email: '',
     phone: '',
     resume: null,
@@ -61,8 +51,8 @@ export default function JobApplicationModal({ job, isOpen, onClose, onSubmit }: 
                 type="text"
                 required
                 className="mt-1 w-full p-2 border rounded"
-                value={formData.fullName}
-                onChange={(e) => setFormData(prev => ({ ...prev, fullName: e.target.value }))}
+                value={formData.name}
+                onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
               />
             </div>
 
